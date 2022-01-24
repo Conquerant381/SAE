@@ -63,14 +63,35 @@ public class Classification {
     }
 
     public static void main(String[] args) {
-
+        Scanner lecteur = new Scanner(System.in);
+/*
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
         for (int i = 0; i < depeches.size(); i++) {
             depeches.get(i).afficher();
+        }*/
+
+        // Création de la catégorie
+        Categorie categorieSport = new Categorie("Sport");
+
+        // Initialisation du lexique
+        categorieSport.initLexique("./sport.txt");
+
+        // Affichage du contenu de l'objet
+        System.out.println("Contenu de la catégorie Sport :");
+        System.out.println("Nom     : " + categorieSport.getNom());
+        for (int i = 0; i < categorieSport.getLexique().size(); i++) {
+            System.out.println("Lexique : " + categorieSport.getLexique().get(i).afficher());
         }
+
+        // Saisie d'un mot par l'utilisateur
+        System.out.print("Veuiller saisir un mot : ");
+        String mot = lecteur.nextLine();
+
+        // Vérification de la présence du mot dans le lexique
+        System.out.println("Valeur de " + mot + " = " + UtilitairePaireChaineEntier.entierPourChaine(categorieSport.getLexique(), mot));
 
     }
 

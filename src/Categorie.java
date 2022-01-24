@@ -1,5 +1,6 @@
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
@@ -14,16 +15,13 @@ public class Categorie {
         this.nom = nom;
     }
 
-
     public String getNom() {
         return nom;
     }
 
-
     public ArrayList<PaireChaineEntier> getLexique() {
         return lexique;
     }
-
 
     // initialisation du lexique de la catégorie à partir du contenu d'un fichier texte
     public void initLexique(String nomFichier) {
@@ -31,21 +29,22 @@ public class Categorie {
         try {
             FileInputStream file = new FileInputStream(nomFichier);
             Scanner scanner = new Scanner(file);
+            String ligne;
+            int index;
+            String chaine;
+            int entier;
 
             while (scanner.hasNextLine()) {
-            String ligne = scanner.nextLine();
-            int separateur = ligne.indexOf(":");
-            String motCle = ligne.substring(0,separateur);
-            int poids = parseInt(ligne.substring(separateur+1));
-            PaireChaineEntier unLexique = new PaireChaineEntier(motCle, poids);
-            lexique.add(unLexique);
+                ligne = scanner.nextLine();
+                index = ligne.indexOf(":");
+                chaine = ligne.substring(0,index);
+                entier = parseInt(ligne.substring(index+1));
+                lexique.add(new PaireChaineEntier(chaine, entier));
             }
             scanner.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-
-
     }
 
 
@@ -53,6 +52,4 @@ public class Categorie {
     public int score(Depeche d) {
         return 0;
     }
-
-
 }

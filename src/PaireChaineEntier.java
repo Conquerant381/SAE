@@ -3,8 +3,9 @@ public class PaireChaineEntier {
     private int entier;
 
     public PaireChaineEntier(String chaine, int entier) {
+        this.chaine = chaine;
+        this.entier = entier;
     }
-
 
     public String getchaine() {
         return this.chaine;
@@ -14,13 +15,16 @@ public class PaireChaineEntier {
         this.chaine = chaine;
     }
 
-
     public int getEntier() {
         return this.entier;
     }
 
     public void setEntier(int entier) {
-    this.entier = entier;
+        this.entier = entier;
+    }
+
+    public String afficher() {
+        return (this.chaine + " - " + this.entier);
     }
 
 }
