@@ -1,12 +1,23 @@
 public class PaireChaineEntier {
     private String chaine;
-    private int entier;
+    private int Entier;
 
-    public String getChaine() {
-        return chaine;
+
+    public String getchaine() {
+        return this.chaine;
     }
+
+    public void setchaine(String chaine) {
+        this.chaine = chaine;
+    }
+
 
     public int getEntier() {
-        return entier;
+        return this.Entier;
     }
+
+    public void setEntier(int Entier) {
+        this.Entier = Entier;
+    }
+
 }
