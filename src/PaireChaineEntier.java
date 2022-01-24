@@ -1,8 +1,8 @@
 public class PaireChaineEntier {
     private String chaine;
-    private int Entier;
+    private int entier;
 
-    public PaireChaineEntier(String chaine, int Entier) {
+    public PaireChaineEntier(String chaine, int entier) {
     }
 
 
@@ -16,11 +16,11 @@ public class PaireChaineEntier {
 
 
     public int getEntier() {
-        return this.Entier;
+        return this.entier;
     }
 
-    public void setEntier(int Entier) {
-        this.Entier = Entier;
+    public void setEntier(int entier) {
+    this.entier = entier;
     }
 
 }
