@@ -1,5 +1,4 @@
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,13 +18,26 @@ public class Categorie {
     }
 
 
-    public  ArrayList<PaireChaineEntier> getLexique() {
+    public ArrayList<PaireChaineEntier> getLexique() {
         return lexique;
     }
 
 
     // initialisation du lexique de la catégorie à partir du contenu d'un fichier texte
     public void initLexique(String nomFichier) {
+        ArrayList<PaireChaineEntier> lexique = new ArrayList();
+        try {
+            FileInputStream file = new FileInputStream(depeches.txt);
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
 
     }
 
