@@ -2,6 +2,9 @@ public class PaireChaineEntier {
     private String chaine;
     private int Entier;
 
+    public PaireChaineEntier(String chaine, int Entier) {
+    }
+
 
     public String getchaine() {
         return this.chaine;

@@ -2,6 +2,8 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Categorie {
 
     private String nom; // le nom de la catégorie p.ex : sport, politique,...
@@ -25,15 +27,20 @@ public class Categorie {
 
     // initialisation du lexique de la catégorie à partir du contenu d'un fichier texte
     public void initLexique(String nomFichier) {
-        ArrayList<PaireChaineEntier> lexique = new ArrayList();
+        lexique = new ArrayList<>();
         try {
-            FileInputStream file = new FileInputStream(depeches.txt);
+            FileInputStream file = new FileInputStream(nomFichier);
             Scanner scanner = new Scanner(file);
 
             while (scanner.hasNextLine()) {
-
+            String ligne = scanner.nextLine();
+            int separateur = ligne.indexOf(":");
+            String motCle = ligne.substring(0,separateur);
+            int poids = parseInt(ligne.substring(separateur+1));
+            PaireChaineEntier unLexique = new PaireChaineEntier(motCle, poids);
+            lexique.add(unLexique);
             }
-
+            scanner.close();
         } catch (Exception e) {
             System.out.println(e);
         }
