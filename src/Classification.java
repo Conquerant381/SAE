@@ -93,6 +93,9 @@ public class Classification {
         // Vérification de la présence du mot dans le lexique
         System.out.println("Valeur de " + mot + " = " + UtilitairePaireChaineEntier.entierPourChaine(categorieSport.getLexique(), mot));
 
+        Categorie CatScore = new Categorie("Score");
+        CatScore.score();
+
     }
 
 
