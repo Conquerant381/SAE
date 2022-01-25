@@ -1,3 +1,5 @@
+import jdk.jshell.execution.Util;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -115,6 +117,16 @@ public class Classification {
         for (int i = 400; i < 499; i++) {
             System.out.println(i + 1 + " " + categorieSport.score(depeches.get(i)));
         }
+
+        ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
+
+            for (int i = 0; i < Categorie.size(); i++) {
+                catScore.add(new PaireChaineEntier(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(150))));
+            }
+            System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
+               /* for (int i = 0; i < Categorie.size(); i++) {
+            System.out.println(UtilitairePaireChaineEntier.chaineMax(new ArrayList<PaireChaineEntier>(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(5)))));
+        }*/
 
 
     }
