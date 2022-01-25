@@ -20,7 +20,13 @@ public class UtilitairePaireChaineEntier {
     }
 
     public static String chaineMax(ArrayList<PaireChaineEntier> listePaires) {
-        return "SPORTS";
+        int IndMax = listePaires.get(0).getEntier();
+        for (int i = 0; i < listePaires.size(); i++) {
+            if (listePaires.get(i).getEntier() > IndMax) {
+                IndMax = i;
+            }
+        }
+        return listePaires.get(IndMax).getchaine();
     }
 
 
