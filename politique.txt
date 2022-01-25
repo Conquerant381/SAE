@@ -37,4 +37,15 @@ chef:1
 pouvoir:1
 secrétaire:1
 français:1
-%
+%:2
+éducation:2
+enseignement:2
+maires:3
+mairie:2
+représentent:1
+réforme:2
+nationale:2
+société:1
+jury:1
+Relaxe:2
+sans-papiers
