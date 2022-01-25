@@ -48,4 +48,4 @@ nationale:2
 société:1
 jury:1
 Relaxe:2
-sans-papiers
+sans-papiers:2
