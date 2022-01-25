@@ -48,7 +48,7 @@ public class Categorie {
     }
 
 
-    //calcul du score d'une dépêche pour la catégorie
+    // Calcul du score d'une dépêche pour la catégorie
     public int score(Depeche d) {
         int result = 0;
         for (int i = 0; i < d.getMots().size(); i++) {

@@ -1,6 +1,7 @@
 import jdk.jshell.execution.Util;
 
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -43,7 +44,89 @@ public class Classification {
 
 
     public static void classementDepeches(ArrayList<Depeche> depeches, ArrayList<Categorie> categories, String nomFichier) {
+
+        int ScoreCulture = 0, nbDepecheCulture = 0;
+        int ScoreEco = 0, nbDepecheEco = 0;
+        int ScoreEnv = 0, nbDepecheEnv = 0;
+        int ScorePolitique = 0, nbDepechePolitique = 0;
+        int ScoreSport = 0, nbDepecheSport = 0;
+
+        String categorieTrouve;
+        int reponseCorrecte;
+
+        try {
+            FileWriter file = new FileWriter(nomFichier);
+
+            // Boucle sur toutes les dépêches
+            for (int i = 0; i < depeches.size(); i++) {
+
+                // Création et mise à jour d'un tableau de score pour la dépêche pour chaque catégorie
+                ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
+                for (int j = 0; j < categories.size(); j++) {
+                    catScore.add(new PaireChaineEntier(categories.get(j).getNom(), categories.get(j).score(depeches.get(i))));
+                }
+
+                // Détermination de la catégorie de la dépêche
+                categorieTrouve = UtilitairePaireChaineEntier.chaineMax(catScore);
+
+                // Comparaison de la catégorie trouvée avec la catégorie indiquée dans la dépêche
+                if (depeches.get(i).getCategorie().compareTo(categorieTrouve) == 0) {
+                    reponseCorrecte = 1;
+                } else {
+                    reponseCorrecte = 0;
+                }
+
+                // Mise à jour du tableau de résultat pour la catégorie de la dépêche
+                switch (depeches.get(i).getCategorie()) {
+                    case "CULTURE":
+                        ScoreCulture += reponseCorrecte;
+                        nbDepecheCulture++;
+                        break;
+                    case "ECONOMIE":
+                        ScoreEco += reponseCorrecte;
+                        nbDepecheEco++;
+                        break;
+                    case "ENVIRONNEMENT-SCIENCES":
+                        ScoreEnv += reponseCorrecte;
+                        nbDepecheEnv++;
+                        break;
+                    case "POLITIQUE":
+                        ScorePolitique += reponseCorrecte;
+                        nbDepechePolitique++;
+                        break;
+                    case "SPORTS":
+                        ScoreSport += reponseCorrecte;
+                        nbDepecheSport++;
+                        break;
+                    default:
+                        // Ne dois jamais être là
+                }
+                // Affichage de la catégorie trouvée pour la dépêche
+                file.write(String.format("%03d", i+1) + ":" + categorieTrouve + "\n");
+            }
+
+            // Calcul des moyennes
+            float moyenneCulture = ScoreCulture*100/nbDepecheCulture;
+            float moyenneEco = ScoreEco*100/nbDepecheEco;
+            float moyenneEnv = ScoreEnv*100/nbDepecheEnv;
+            float moyennePolitique = ScorePolitique*100/nbDepechePolitique;
+            float moyenneSport = ScoreSport*100/nbDepecheSport;
+
+            // Affichage des moyennes
+            file.write("CULTURE:\t\t\t\t" + moyenneCulture + "%\n");
+            file.write("ECONOMIE:\t\t\t\t" + moyenneEco + "%\n");
+            file.write("ENVIRONNEMENT-SCIENCES:\t" + moyenneEnv + "%\n");
+            file.write("POLITIQUE:\t\t\t\t" + moyennePolitique + "%\n");
+            file.write("SPORTS:\t\t\t\t\t" + moyenneSport + "%\n");
+            file.write("MOYENNE:\t\t\t\t" + ((moyenneCulture+moyenneEco+moyenneEnv+moyennePolitique+moyenneSport)/5) + "%\n");
+
+
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
@@ -77,11 +160,11 @@ public class Classification {
         */
 
         // Création de la catégorie
-        Categorie categorieCulture = new Categorie("Culture");
-        Categorie categorieEco = new Categorie("Eco");
-        Categorie categorieEnvironment = new Categorie("Environment");
-        Categorie categoriePolitique = new Categorie("Politique");
-        Categorie categorieSport = new Categorie("Sport");
+        Categorie categorieCulture = new Categorie("CULTURE");
+        Categorie categorieEco = new Categorie("ECONOMIE");
+        Categorie categorieEnvironment = new Categorie("ENVIRONNEMENT-SCIENCES");
+        Categorie categoriePolitique = new Categorie("POLITIQUE");
+        Categorie categorieSport = new Categorie("SPORTS");
 
         // Initialisation du lexique
         categorieCulture.initLexique("./culture.txt");
@@ -113,24 +196,26 @@ public class Classification {
         // Vérification de la présence du mot dans le lexique
         System.out.println("Valeur de " + mot + " = " + UtilitairePaireChaineEntier.entierPourChaine(categorieSport.getLexique(), mot));
 
-
-        for (int i = 400; i < 499; i++) {
+        // Test Score
+        for (int i = 0; i < 499; i++) {
             System.out.println(i + 1 + " " + categorieSport.score(depeches.get(i)));
         }
 
+        // Création du vecteur de scores
         ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
 
-            for (int i = 0; i < Categorie.size(); i++) {
-                catScore.add(new PaireChaineEntier(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(150))));
-            }
-            System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
-               /* for (int i = 0; i < Categorie.size(); i++) {
-            System.out.println(UtilitairePaireChaineEntier.chaineMax(new ArrayList<PaireChaineEntier>(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(5)))));
-        }*/
+        // Mise à jour du vecteur de scores pour la dépêche n°150
+        for (int i = 0; i < Categorie.size(); i++) {
+            catScore.add(new PaireChaineEntier(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(150))));
+        }
 
+        // Nom de la catégorie ayant le score maximal
+        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
+
+        classementDepeches(depeches, Categorie, "Classement.txt");
 
     }
 
-
 }
+
 
