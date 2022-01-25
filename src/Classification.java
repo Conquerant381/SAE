@@ -1,5 +1,4 @@
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -76,10 +75,27 @@ public class Classification {
         */
 
         // Création de la catégorie
+        Categorie categorieCulture = new Categorie("Culture");
+        Categorie categorieEco = new Categorie("Eco");
+        Categorie categorieEnvironment = new Categorie("Environment");
+        Categorie categoriePolitique = new Categorie("Politique");
         Categorie categorieSport = new Categorie("Sport");
 
         // Initialisation du lexique
+        categorieCulture.initLexique("./culture.txt");
+        categorieEco.initLexique("./eco.txt");
+        categorieEnvironment.initLexique("./environment.txt");
+        categoriePolitique.initLexique("./politique.txt");
         categorieSport.initLexique("./sport.txt");
+
+        // ArrayList des 5 Categories
+        ArrayList<Categorie> Categorie = new ArrayList();
+        Categorie.add(categorieCulture);
+        Categorie.add(categorieEco);
+        Categorie.add(categorieEnvironment);
+        Categorie.add(categoriePolitique);
+        Categorie.add(categorieSport);
+
 
         // Affichage du contenu de l'objet
         System.out.println("Contenu de la catégorie Sport :");
@@ -97,9 +113,7 @@ public class Classification {
 
 
         for (int i = 400; i < 499; i++) {
-            if (categorieSport.score(depeches.get(i)) == 0) {
-                System.out.println(i + 1);
-            }
+            System.out.println(i + 1 + " " + categorieSport.score(depeches.get(i)));
         }
 
 
