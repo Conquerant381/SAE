@@ -12,7 +12,8 @@ biodiversité:3
 biologie:3
 biologiques:3
 bovins:1
-cancers:1
+cancers:2
+cancer:2
 cellulaire:1
 cellules:1
 chimie:2
