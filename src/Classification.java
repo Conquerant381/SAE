@@ -64,14 +64,16 @@ public class Classification {
 
     public static void main(String[] args) {
         Scanner lecteur = new Scanner(System.in);
-/*
+
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
         ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
+        /*
         for (int i = 0; i < depeches.size(); i++) {
             depeches.get(i).afficher();
-        }*/
+        }
+        */
 
         // Création de la catégorie
         Categorie categorieSport = new Categorie("Sport");
@@ -93,8 +95,13 @@ public class Classification {
         // Vérification de la présence du mot dans le lexique
         System.out.println("Valeur de " + mot + " = " + UtilitairePaireChaineEntier.entierPourChaine(categorieSport.getLexique(), mot));
 
-        Categorie CatScore = new Categorie("Score");
-        CatScore.score();
+
+        for (int i = 400; i < 499; i++) {
+            if (categorieSport.score(depeches.get(i)) == 0) {
+                System.out.println(i + 1);
+            }
+        }
+
 
     }
 

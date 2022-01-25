@@ -37,3 +37,5 @@ UEFA:3
 vainqueur:2
 victoire:2
 équipe:2
+mondial:2
+victoires:2
