@@ -128,7 +128,6 @@ public class Classification {
 
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
-
         for (int i = 0; i < depeches.size(); i++) {
             if (depeches.get(i).getCategorie().compareTo(categorie) == 0) {
                 for (int j = 0; j < depeches.get(i).getMots().size(); j++) {
@@ -142,21 +141,50 @@ public class Classification {
     }
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
-
+        for (int i = 0; i < depeches.size(); i++) {
+            for (int j = 0; j < depeches.get(i).getMots().size(); j++) {
+                int IndexMot = UtilitairePaireChaineEntier.indicePourChaine(dictionnaire, depeches.get(i).getMots().get(j));
+                if (IndexMot != -1) {
+                    if (depeches.get(i).getCategorie().compareTo(categorie) == 0) {
+                        dictionnaire.get(IndexMot).setEntier(dictionnaire.get(IndexMot).getEntier() + 1);
+                    } else {
+                        dictionnaire.get(IndexMot).setEntier(dictionnaire.get(IndexMot).getEntier() - 1);
+                    }
+                }
+            }
+        }
     }
 
     public static int poidsPourScore(int score) {
-        if (score < 50) {
-            return 3;
-        } else  if (score < 75) {
+        if (score < 0) {
+            return 0;
+        } else if (score <= 2) {
+            return 1;
+        } else if (score <= 4) {
             return 2;
         } else {
-            return 1;
+            return 3;
         }
     }
 
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
 
+        ArrayList<PaireChaineEntier> LeDico = initDico(depeches, categorie);
+
+        calculScores(depeches, categorie, LeDico);
+
+        try {
+            FileWriter file = new FileWriter(nomFichier);
+            for (int i = 0; i < LeDico.size(); i++) {
+                // Tous les mots avec moins de 4 Char (ex. le, la, les, des, du...) sont retirées car ne sont pas significatifs
+                if (LeDico.get(i).getchaine().length() > 3 && poidsPourScore(LeDico.get(i).getEntier()) != 0) {
+                    file.write(LeDico.get(i).getchaine() + ":" + poidsPourScore(LeDico.get(i).getEntier()) + "\n");
+                }
+            }
+            file.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void main(String[] args) {
@@ -194,6 +222,8 @@ public class Classification {
         Categorie.add(categoriePolitique);
         Categorie.add(categorieSport);
 
+
+
 /*
         // Affichage du contenu de l'objet
         System.out.println("Contenu de la catégorie Sport :");
@@ -227,7 +257,35 @@ public class Classification {
 
         classementDepeches(depeches, Categorie, "Classement.txt");
 
-        System.out.println(initDico(depeches, "CULTURE"));
+        generationLexique(depeches, "CULTURE", "AutoCulture.txt");
+        generationLexique(depeches, "ECONOMIE", "AutoEconomie.txt");
+        generationLexique(depeches, "ENVIRONNEMENT-SCIENCES", "AutoEnvironment.txt");
+        generationLexique(depeches, "POLITIQUE", "AutoPolitique.txt");
+        generationLexique(depeches, "SPORTS", "AutoSports.txt");
+
+        // Initialisation du lexique
+        categorieCulture.initLexique("./AutoCulture.txt");
+        categorieEco.initLexique("./AutoEconomie.txt");
+        categorieEnvironment.initLexique("./AutoEnvironment.txt");
+        categoriePolitique.initLexique("./AutoPolitique.txt");
+        categorieSport.initLexique("./AutoSports.txt");
+
+        // ArrayList des 5 Categories
+        Categorie = new ArrayList();
+        Categorie.add(categorieCulture);
+        Categorie.add(categorieEco);
+        Categorie.add(categorieEnvironment);
+        Categorie.add(categoriePolitique);
+        Categorie.add(categorieSport);
+        classementDepeches(depeches, Categorie, "AutoClassement.txt");
+
+
+        ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
+        for (int i = 0; i < Categorie.size(); i++) {
+            catScore.add(new PaireChaineEntier(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(2))));
+            System.out.println(Categorie.get(i).getNom() + ":" + Categorie.get(i).score(depeches.get(2)));
+        }
+        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
 
     }
 

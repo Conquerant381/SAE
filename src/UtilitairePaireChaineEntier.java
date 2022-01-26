@@ -29,6 +29,7 @@ public class UtilitairePaireChaineEntier {
         for (int i = 0; i < listePaires.size(); i++) {
             if (listePaires.get(i).getEntier() > ScoreMax) {
                 IndMax = i;
+                ScoreMax = listePaires.get(i).getEntier();
             }
         }
         return listePaires.get(IndMax).getchaine();
