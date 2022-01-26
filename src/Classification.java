@@ -142,10 +142,17 @@ public class Classification {
     }
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
+
     }
 
     public static int poidsPourScore(int score) {
-        return 0;
+        if (score < 50) {
+            return 3;
+        } else  if (score < 75) {
+            return 2;
+        } else {
+            return 1;
+        }
     }
 
     public static void generationLexique(ArrayList<Depeche> depeches, String categorie, String nomFichier) {
