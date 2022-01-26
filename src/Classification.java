@@ -181,7 +181,7 @@ public class Classification {
         Categorie.add(categoriePolitique);
         Categorie.add(categorieSport);
 
-
+/*
         // Affichage du contenu de l'objet
         System.out.println("Contenu de la catégorie Sport :");
         System.out.println("Nom     : " + categorieSport.getNom());
@@ -210,7 +210,7 @@ public class Classification {
         }
 
         // Nom de la catégorie ayant le score maximal
-        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
+        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
 
         classementDepeches(depeches, Categorie, "Classement.txt");
 
