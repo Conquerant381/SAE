@@ -1,5 +1,3 @@
-import jdk.jshell.execution.Util;
-
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -102,15 +100,15 @@ public class Classification {
                         // Ne dois jamais être là
                 }
                 // Affichage de la catégorie trouvée pour la dépêche
-                file.write(String.format("%03d", i+1) + ":" + categorieTrouve + "\n");
+                file.write(String.format("%03d", i + 1) + ":" + categorieTrouve + "\n");
             }
 
             // Calcul des moyennes
-            float moyenneCulture = ScoreCulture*100/nbDepecheCulture;
-            float moyenneEco = ScoreEco*100/nbDepecheEco;
-            float moyenneEnv = ScoreEnv*100/nbDepecheEnv;
-            float moyennePolitique = ScorePolitique*100/nbDepechePolitique;
-            float moyenneSport = ScoreSport*100/nbDepecheSport;
+            float moyenneCulture = ScoreCulture * 100 / nbDepecheCulture;
+            float moyenneEco = ScoreEco * 100 / nbDepecheEco;
+            float moyenneEnv = ScoreEnv * 100 / nbDepecheEnv;
+            float moyennePolitique = ScorePolitique * 100 / nbDepechePolitique;
+            float moyenneSport = ScoreSport * 100 / nbDepecheSport;
 
             // Affichage des moyennes
             file.write("CULTURE:\t\t\t\t" + moyenneCulture + "%\n");
@@ -118,7 +116,7 @@ public class Classification {
             file.write("ENVIRONNEMENT-SCIENCES:\t" + moyenneEnv + "%\n");
             file.write("POLITIQUE:\t\t\t\t" + moyennePolitique + "%\n");
             file.write("SPORTS:\t\t\t\t\t" + moyenneSport + "%\n");
-            file.write("MOYENNE:\t\t\t\t" + ((moyenneCulture+moyenneEco+moyenneEnv+moyennePolitique+moyenneSport)/5) + "%\n");
+            file.write("MOYENNE:\t\t\t\t" + ((moyenneCulture + moyenneEco + moyenneEnv + moyennePolitique + moyenneSport) / 5) + "%\n");
 
 
             file.close();
@@ -128,11 +126,19 @@ public class Classification {
     }
 
 
-
     public static ArrayList<PaireChaineEntier> initDico(ArrayList<Depeche> depeches, String categorie) {
         ArrayList<PaireChaineEntier> resultat = new ArrayList<>();
-        return resultat;
 
+        for (int i = 0; i < depeches.size(); i++) {
+            if (depeches.get(i).getCategorie().compareTo(categorie) == 0) {
+                for (int j = 0; j < depeches.get(i).getMots().size(); j++) {
+                    if (UtilitairePaireChaineEntier.indicePourChaine(resultat, depeches.get(i).getMots().get(j)) == -1) {
+                        resultat.add(new PaireChaineEntier(depeches.get(i).getMots().get(j), 0));
+                    }
+                }
+            }
+        }
+        return resultat;
     }
 
     public static void calculScores(ArrayList<Depeche> depeches, String categorie, ArrayList<PaireChaineEntier> dictionnaire) {
@@ -213,6 +219,8 @@ public class Classification {
         System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
 
         classementDepeches(depeches, Categorie, "Classement.txt");
+
+        System.out.println(initDico(depeches, "CULTURE"));
 
     }
 
