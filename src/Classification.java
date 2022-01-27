@@ -280,12 +280,12 @@ public class Classification {
         classementDepeches(depeches, Categorie, "AutoClassement.txt");
 
 
-        ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
+/*        ArrayList<PaireChaineEntier> catScore = new ArrayList<>();
         for (int i = 0; i < Categorie.size(); i++) {
             catScore.add(new PaireChaineEntier(Categorie.get(i).getNom(), Categorie.get(i).score(depeches.get(2))));
             System.out.println(Categorie.get(i).getNom() + ":" + Categorie.get(i).score(depeches.get(2)));
         }
-        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));
+        System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
 
     }
 
