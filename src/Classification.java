@@ -158,9 +158,9 @@ public class Classification {
     public static int poidsPourScore(int score) {
         if (score < 0) {
             return 0;
-        } else if (score <= 2) {
+        } else if (score <= 3) {
             return 1;
-        } else if (score <= 4) {
+        } else if (score <= 5) {
             return 2;
         } else {
             return 3;
@@ -188,11 +188,12 @@ public class Classification {
     }
 
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         Scanner lecteur = new Scanner(System.in);
 
         //Chargement des dépêches en mémoire
         System.out.println("chargement des dépêches");
-        ArrayList<Depeche> depeches = lectureDepeches("./test.txt");
+        ArrayList<Depeche> depeches = lectureDepeches("./depeches.txt");
 
         /*
         for (int i = 0; i < depeches.size(); i++) {
@@ -216,11 +217,11 @@ public class Classification {
 
         // ArrayList des 5 Categories
         ArrayList<Categorie> Categorie = new ArrayList();
-        Categorie.add(categorieCulture);
-        Categorie.add(categorieEco);
-        Categorie.add(categorieEnvironment);
-        Categorie.add(categoriePolitique);
-        Categorie.add(categorieSport);
+//        Categorie.add(categorieCulture);
+//        Categorie.add(categorieEco);
+//        Categorie.add(categorieEnvironment);
+//        Categorie.add(categoriePolitique);
+//        Categorie.add(categorieSport);
 
 
 
@@ -255,7 +256,7 @@ public class Classification {
         // Nom de la catégorie ayant le score maximal
         System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
 
-        classementDepeches(depeches, Categorie, "Classement.txt");
+        //classementDepeches(depeches, Categorie, "Classement.txt");
 
         generationLexique(depeches, "CULTURE", "AutoCulture.txt");
         generationLexique(depeches, "ECONOMIE", "AutoEconomie.txt");
@@ -277,6 +278,7 @@ public class Classification {
         Categorie.add(categorieEnvironment);
         Categorie.add(categoriePolitique);
         Categorie.add(categorieSport);
+        System.out.println(System.currentTimeMillis() - start + " ms");
         classementDepeches(depeches, Categorie, "AutoClassement.txt");
 
 
@@ -286,6 +288,8 @@ public class Classification {
             System.out.println(Categorie.get(i).getNom() + ":" + Categorie.get(i).score(depeches.get(2)));
         }
         System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
+
+        System.out.println(System.currentTimeMillis() - start + " ms");
 
     }
 
