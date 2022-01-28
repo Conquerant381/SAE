@@ -177,7 +177,7 @@ public class Classification {
             FileWriter file = new FileWriter(nomFichier);
             for (int i = 0; i < LeDico.size(); i++) {
                 // Tous les mots avec moins de 4 Char (ex. le, la, les, des, du...) sont retirées car ne sont pas significatifs
-                if (LeDico.get(i).getchaine().length() > 3 && poidsPourScore(LeDico.get(i).getEntier()) != 0) {
+                if (LeDico.get(i).getchaine().length() > 0 && poidsPourScore(LeDico.get(i).getEntier()) != 0) {
                     file.write(LeDico.get(i).getchaine() + ":" + poidsPourScore(LeDico.get(i).getEntier()) + "\n");
                 }
             }
@@ -217,11 +217,11 @@ public class Classification {
 
         // ArrayList des 5 Categories
         ArrayList<Categorie> Categorie = new ArrayList();
-//        Categorie.add(categorieCulture);
-//        Categorie.add(categorieEco);
-//        Categorie.add(categorieEnvironment);
-//        Categorie.add(categoriePolitique);
-//        Categorie.add(categorieSport);
+        Categorie.add(categorieCulture);
+        Categorie.add(categorieEco);
+        Categorie.add(categorieEnvironment);
+        Categorie.add(categoriePolitique);
+        Categorie.add(categorieSport);
 
 
 
@@ -256,7 +256,7 @@ public class Classification {
         // Nom de la catégorie ayant le score maximal
         System.out.println(UtilitairePaireChaineEntier.chaineMax(catScore));*/
 
-        //classementDepeches(depeches, Categorie, "Classement.txt");
+        classementDepeches(depeches, Categorie, "Classement.txt");
 
         generationLexique(depeches, "CULTURE", "AutoCulture.txt");
         generationLexique(depeches, "ECONOMIE", "AutoEconomie.txt");
@@ -278,7 +278,6 @@ public class Classification {
         Categorie.add(categorieEnvironment);
         Categorie.add(categoriePolitique);
         Categorie.add(categorieSport);
-        System.out.println(System.currentTimeMillis() - start + " ms");
         classementDepeches(depeches, Categorie, "AutoClassement.txt");
 
 

@@ -3,9 +3,14 @@ entrer:1
 coeur:1
 shoah:3
 enfants:2
+10:1
 nicolas:3
 sarkozy:3
+13:1
+qu:1
+cm2:2
 confier:1
+11:1
 victimes:1
 georges:1
 bensoussan:1
@@ -14,6 +19,8 @@ garde:1
 religion:2
 civile:1
 pierre:1
+ps:3
+élu:1
 maire:3
 succède:1
 centriste:1
@@ -22,12 +29,16 @@ moudenc:1
 app-ump:1
 ville:1
 dirigée:1
+37:1
 droite:3
 jean-claude:1
 gaudin:1
+ump:3
 réélu:3
+51:1
 voix:1
 majorité:1
+49:1
 socialiste:3
 jean-noël:1
 guérini:1
@@ -71,6 +82,7 @@ surtout:1
 injuste:1
 ancienne:1
 déportée:1
+82:1
 gère:1
 privée:1
 président:1
@@ -86,12 +98,15 @@ construction:1
 culte:1
 enjeu:1
 municipales:3
+?:2
 débat:2
 direct:2
 stéphanie:1
 bars:1
 journaliste:2
 france/société:1
+h:2
+00:1
 électeurs:1
 jean:1
 tiberi:1
@@ -108,6 +123,7 @@ examen:1
 femme:1
 xavière:1
 enquête:1
+ve:1
 arrondissement:1
 réunit:1
 personnalités:1
@@ -122,8 +138,10 @@ conserver:1
 conduit:1
 liste:1
 sortante:1
+lui:1
 parti:3
 investi:1
+57:1
 député:2
 ramonville:1
 petite:1
@@ -145,6 +163,7 @@ déportés:1
 donnez:1
 votre:1
 avis:1
+m:3
 étonne:1
 hollande:1
 approuve:1
@@ -189,6 +208,7 @@ calendrier:1
 congrès:1
 novembre:1
 strasbourg:1
+csa:1
 conduite:1
 roland:1
 ries:1
@@ -243,16 +263,20 @@ pourquoi:1
 engage-t-il:1
 miné:1
 pauvre:1
+con:1
 glisse:1
 vexé:1
 snobe:1
 visite:1
+pu:1
 contenir:1
 insulte:1
 refusait:1
 serrer:1
 main:1
 dévissage:1
+jdd:1
+62:1
 déclarent:1
 plutôt:1
 mécontents:1
@@ -264,6 +288,7 @@ boucliers:1
 initiative:1
 invalidation:1
 partielle:1
+loi:2
 constitutionnel:1
 demandé:1
 aide:1
@@ -274,12 +299,14 @@ opposition:1
 coup:1
 désorganisé:1
 endetté:1
+fn:1
 assurera:1
 présence:1
 réduite:1
 prochains:1
 scrutins:1
 jean-marie:1
+pen:1
 listes:1
 habitants:1
 robert:1
@@ -315,6 +342,7 @@ bouffe:1
 occupe:1
 jeunes:1
 maires:1
+30:1
 prennent:1
 relève:1
 partage:1
@@ -327,6 +355,7 @@ consacre:1
 pleinement:1
 gaston:1
 viens:1
+83:1
 envisage:2
 fraîcheur:1
 huitième:1
@@ -334,6 +363,7 @@ mandat:1
 orly:1
 ex-communiste:1
 délicatesse:1
+pcf:2
 décidé:1
 mi-décembre:1
 repartir:1
@@ -348,9 +378,11 @@ lâcher:1
 fauteuil:1
 paul:1
 lombard:1
+80:1
 jean-pierre:1
 fourcade:1
 rausch:1
+78:1
 représentent:1
 pavés:1
 1968:1
@@ -363,6 +395,7 @@ moment:1
 historique:1
 valeurs:1
 aujourd:1
+hui:1
 rachida:1
 dati:1
 justifie:1
@@ -396,6 +429,7 @@ associations:1
 opposent:1
 remise:1
 cause:1
+sol:1
 mayotte:1
 outre-mer:1
 christian:1
@@ -429,9 +463,11 @@ candidats:1
 favorables:1
 redevance:1
 incitant:1
+tri:1
 déchets:1
 eco-emballages:1
 publiée:1
+40:1
 prioritaire:1
 sectes:1
 nathalie:1
@@ -444,6 +480,8 @@ ehess:1
 airy:1
 routier:1
 affirme:1
+vu:1
+sms:1
 aurait:1
 envoyé:1
 cécilia:1
@@ -458,6 +496,7 @@ ouverte:1
 suite:1
 clearstream:1
 isole:1
+huy:1
 pons:1
 volonté:1
 renvoyer:1
@@ -493,6 +532,7 @@ espace:1
 quelques:1
 michel:1
 moynier:1
+div:1
 aude:1
 posé:1
 défenseur:1
@@ -559,6 +599,7 @@ subventions:1
 relaxe:1
 tenté:1
 expulsion:1
+vol:1
 paris-bamako:1
 accusée:1
 entrave:1
@@ -600,6 +641,7 @@ a-t-elle:1
 philippe:1
 ridet:1
 françafrique:1
+cap:1
 engage:1
 renégocier:1
 accords:1
@@ -617,6 +659,7 @@ autour:1
 enrichissant:1
 éventuellement:1
 dénaturer:1
+je:1
 suis:1
 discussions:1
 réunie:1
@@ -671,6 +714,7 @@ extrêmement:1
 dense:1
 rien:1
 existe:1
+800:1
 actives:1
 suppression:1
 tranchée:1
@@ -696,10 +740,13 @@ langue:1
 sauce:1
 piquante:1
 correcteurs:1
+fr:1
 pointent:1
+vue:1
 portant:1
 citation:1
 beaumarchais:1
+160:1
 députés:1
 nettoyer:1
 jacob:1
@@ -729,6 +776,7 @@ vague:1
 relance:1
 leonetti:1
 cantonales:1
+101:1
 conseils:1
 généraux:1
 réunissaient:1
@@ -791,6 +839,7 @@ texte:1
 seules:1
 représentants:1
 administration:1
+fsu:1
 ayant:1
 rejette:1
 avant-projet:1
@@ -862,6 +911,7 @@ relégué:1
 second:1
 maintenu:1
 fonctions:1
+ni:1
 ralentissement:1
 réformes:1
 rigueur:1
@@ -927,6 +977,7 @@ siégerait:1
 non-inscrits:1
 raviser:1
 défait:1
+pau:1
 annulation:1
 déclarations:1
 publiées:1
@@ -960,6 +1011,7 @@ pactole:1
 contesté:1
 logement:1
 récoltés:1
+an:1
 dispositif:1
 gérés:1
 partenaires:1
@@ -980,12 +1032,14 @@ déposés:1
 corbeil-essonnes:1
 jacqueline:1
 amiel-donat:1
+574:1
 irrégularités:1
 propagande:1
 prohibée:1
 corbeil:1
 bruno:1
 piriou:1
+pc:1
 attestations:1
 preuves:1
 irréfutables:1
